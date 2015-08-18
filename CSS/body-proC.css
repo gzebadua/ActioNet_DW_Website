@@ -1,0 +1,631 @@
+/***************************PAGE LAYOUT********************************/
+
+html,
+body, 
+form {
+	margin:0;
+	padding:0;
+	height:100%;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+div#contentWrapper 
+{
+	position:relative;
+	min-height:100%;
+}
+
+div#header
+{
+	width: 910px;
+	background-color: #FFF;
+	margin: 0 auto;
+	padding: 5px 0 0;	
+}
+
+#mainContent 
+{
+	width: 910px;
+	background-color: #FFF;
+	margin: 0 auto;
+	padding-bottom:187px;
+}
+
+table#innerContent
+{
+	width:100%
+}
+
+table#innerContent td#leftInner 
+{
+	width:0px;
+}
+
+table#innerContent td#mainInner
+{
+	width:60%;
+	float:left;
+}
+	
+table#innerContent td#rightInner
+{
+	width:30.5%;
+	float:right;
+}
+
+div#footer
+{
+	background-color: #dfe3db;
+	height: 187px; 
+	width: 100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+
+div#innerFooter
+{
+	height: 187px; 
+	width: 910px;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+}
+
+/****************************ALWAYS-PRESENT ELEMENTS POSITIONING*******************************/
+
+div#divBanner
+{
+	position:relative;
+	margin-top:72px;
+	text-align:center;
+}
+
+div#divUsername
+{
+	float:right;
+	margin-top:-25px;
+	margin-right:10px;
+	text-align:right;
+	width:50%;
+	font-size:11px;
+}
+
+/****************************MAIN MENU NAV BAR STYLING*******************************/
+
+div.s4-toplinks 
+{
+	background-color:#a6b5c8; 
+	height: 35px;
+	width:910px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px;
+}
+
+#navcontainer
+{	
+	margin-bottom: 1px;
+	padding: 0;
+	position:absolute;
+	z-index:10;
+}
+
+#navcontainer ul li
+{
+	display: block; /* IE11 */
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+#navcontainer ul li a
+{
+	background: #a6b5c8;
+	height: 19px;
+	padding: 8px 31px;
+	margin: 0 0 10px 0;
+	color: #304f66;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	font: bold 14px "Lucida Grande", "Lucida Sans Unicode", verdana, lucida, sans-serif;
+}
+
+#navcontainer ul.root li.static:last-child
+{    
+	width: 163px;
+	margin-left: -1px;
+	margin-right:15px;
+} 
+
+#navcontainer ul.static li:last-child  span.static
+{  
+   width: 163px;
+   height:19px;
+} 
+	
+#navcontainer ul li a:hover
+{
+	color: #fff;
+	background: #369;
+	height:19px;
+}
+
+#navcontainer a.active
+{
+	background: #8aabc0;
+	color: #2F5D7D;
+		
+}
+
+.s4-toplinks .s4-tn a.selected
+{
+	border-color: #A6B5C8;
+}
+
+#navcontainer li#active a
+{
+	background: #c60;
+	border: 1px solid #c60;
+	color: #fff;
+}
+
+#navcontainer ul li.dynamic-children span.menu-item
+{
+	background: #a6b5c8;
+	padding-bottom: 6px;
+	padding-top: 8px;
+	margin: 0 0 10px 0px;
+	color: #304f66;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	font: bold 14px "Lucida Grande", "Lucida Sans Unicode", verdana, lucida, sans-serif;
+}
+
+#navcontainer ul li.dynamic-children ul.dynamic
+{	
+	margin-top: -10px;
+	-webkit-padding-start:0px;
+	-moz-padding-start:0px;
+	padding-left:0px;
+	-webkit-margin-before:0px;
+	-moz-margin-before:0px;
+	padding-top:0px;
+}
+
+#navcontainer ul li.dynamic-children ul.dynamic li a
+{
+	margin: 0;
+	font: normal 13px "Lucida Grande","Lucida Sans Unicode",verdana,lucida,sans-serif !important;
+	background: none repeat scroll 0 0 #fff;
+	width: 344px !important;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 18px;
+	display: block;
+}
+
+#navcontainer ul li.dynamic-children ul.dynamic li a:hover
+{
+	font: bold 11px "Lucida Grande","Lucida Sans Unicode",verdana,lucida,sans-serif;
+	margin: 0;
+	background: none repeat scroll 0 0 #336699;
+}
+
+#dynamicSubMenu {
+	display:none; 
+	border:1px solid #336699; 
+	margin-top:-10px;
+}
+
+/****************************MAIN MENU NAV BAR STYLING: IE 11 OVERRIDES*******************************/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+{
+	#navcontainer ul li.dynamic-children ul.dynamic
+	{	
+		padding-top:5px;
+	}
+	
+	#dynamicSubMenu 
+	{
+	   margin-top:-9px;
+	   padding-top:5px;
+	}  
+}
+
+/****************************REPORTS SUBMENU NAV BAR STYLING*******************************/
+
+#subnavcontainer
+{
+	margin-top:0px;
+	margin-bottom: 50px;
+	margin-left:0px;
+	position: relative;
+	z-index: 2;
+	width:910px;
+}
+	
+#subnavcontainer ul#navlist 
+{
+	border: 1px solid white;
+	font-family: Arial, Verdana;
+	font-size: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	
+#subnavcontainer li ul  
+{       
+	top: 27px;   /**************  IT WAS 7px before ***********/
+	z-index:80;
+	display: none; 
+	position: absolute;
+	left: 0px;
+	width: 100px;
+	margin-left:0px;
+	-webkit-padding-start:0px;
+	-moz-padding-start:0px;
+	padding-left:0px;
+} 
+
+#subnavcontainer ul#navlist li
+{
+	position: relative;
+	display: block;
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+#subnavcontainer ul#navlist li a
+{
+	background: #304f66;
+	height: 13px;
+	border: none;
+	padding: 7px 21px;
+	margin: 0 0 10px 0;
+	color: #ffffff !important;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	font: bold 10px "Lucida Grande", "Lucida Sans Unicode", verdana, lucida, sans-serif;
+	width:58px;
+}
+
+#subnavcontainer ul#navlist li a:hover
+{
+	color: #304F66;
+	background: #A6B5C8;
+	cursor: pointer; 
+	cursor: hand;
+} 
+	
+#subnavcontainer #navlist a.active
+{
+	background: #93a4b8;
+	color: #285165;
+}
+
+#subnavcontainer li#active a
+{
+	background: #c60;
+	border: 1px solid #c60;
+	color: #fff;
+}
+	
+#subnavcontainer ul#navlist li ul.subMenu li
+{
+	float: none;
+}
+	
+#subnavcontainer ul#navlist li ul.subMenu li a 
+{
+	background: none repeat scroll 0 0 #A6B5C8;
+	color: #304F66;
+	display: block;
+	font: bold 10px "Lucida Grande","Lucida Sans Unicode",verdana,lucida,sans-serif;
+	height: 12px;
+	margin: 0;
+	padding-bottom: 4px;
+	padding-top: 4px;
+	padding-left: 29px;
+	text-align: left;
+	text-decoration: none;
+	width:100%;
+}
+
+#subnavcontainer ul#navlist li ul.subMenu li a:hover 
+{
+	background: none repeat scroll 0 0 #304F66;
+	color: #A6B5C8;
+}
+	
+#subnavcontainer ul#navlist li ul.subMenuSearch
+{
+	background: #A6B5C8;
+	width:100%;
+	padding-top:15px;
+}
+	
+#subnavcontainer ul#navlist li ul.subMenuSearch li
+{
+	float: none;
+}
+	
+#subnavcontainer ul#navlist li ul.subMenuSearch li .searchLabel
+{
+	font: bold 12px "Lucida Grande","Lucida Sans Unicode",verdana,lucida,sans-serif;
+	color:white;
+	vertical-align:text-bottom;
+	font-weight:bold;
+}
+
+#subnavcontainer ul#navlist li ul.subMenuSearch li a 
+{
+	background: #304F66;
+	color: #A6B5C8;
+	display: block;
+	font: bold 10px "Lucida Grande","Lucida Sans Unicode",verdana,lucida,sans-serif;
+	height: 12px;
+	width:50px;
+	margin-left:69%;
+	padding: 4px;
+	padding-left:0px;
+	text-align: center;
+	text-decoration: none;      
+}
+
+#subnavcontainer ul#navlist li ul.subMenuSearch li a:hover 
+{
+	background: #304F66;
+	color: white;
+}
+
+
+/****************************REPORTS SUBMENU NAV BAR STYLING*******************************/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+{
+	#subnavcontainer ul#navlist li ul.subMenuSearch li a 
+	{
+		margin-left:65%;
+	}
+}
+
+
+/****************************FOOTER STYLING*******************************/
+
+div#innerFooter div.footlinks
+{
+	float: left;
+	width: 225px;
+	margin-left: 0px;
+}
+
+div#innerFooter div.footlinks h3
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #515055;
+	padding-bottom:10px;
+	font-family: verdana,lucida,sans-serif;
+}	
+
+div#innerFooter div.footlinks a
+{
+	text-decoration: none;
+	font-weight:normal;
+	font-size: 11px;
+	color: #6b6b6d;
+	font-family: verdana,lucida,sans-serif;
+} 		
+
+
+/****************************ACCORDION STYLING*******************************/
+
+.accordion dd 
+{
+	padding-bottom: 10px;
+ 
+}
+
+.accordion dt:last-of-type, .accordion dd:last-of-type 
+{
+	/*border-bottom: 1px solid black;*/
+}
+
+.accordion dt a, .accordion dd a 
+{
+	display: block;
+	color: #0072BC;
+}
+
+.accordion dd 
+{
+	border-top: 0;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 150%;
+}
+
+.accordion dd:last-of-type 
+{
+	border-top: 1px solid white;
+	position: relative;
+	top: -1px;
+}
+
+.accordion dt a.inlineLink, .accordion dd a.inlineLink
+{
+	display: inline;
+}
+
+.accordion dt h3.FAQh3Link
+{
+	line-height: 17px;
+	color: #0072BC !important;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #88AC52;
+	position: relative;
+	margin-bottom: 12px;
+}
+
+
+/****************************FILTERING BAR*******************************/
+
+div.filter
+{
+	margin-bottom: 20px;
+}
+
+.filterList li
+{
+	display: inline;
+	list-style-type: none;
+	background-color: #94B367;
+	margin-right:11px;
+	cursor: pointer; 
+	cursor: hand;
+}
+
+.filterList li.active, 
+.filterList li.active a 
+{
+	background-color: #1689A9;
+}
+
+ul.filterList
+{
+	margin-left: 0;
+	padding-left: 0;
+	white-space: nowrap;
+}
+
+.filterList li
+{
+	display: inline;
+	list-style-type: none;
+}
+
+.filterList a, 
+.filterList a:visited
+{
+	color: #fff; 
+	text-decoration: none;
+	font-weight:bold;
+	font-size: 13px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #94B367;
+	display: inline-block;
+}
+
+ul.reportList
+{
+	margin-left: 30px;
+}
+
+
+/*=========================================
+DW CSS
+=========================================== */
+
+input, textarea { color: #000; }
+
+p
+{
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.placeholder { color: #aaa; }
+
+div.sideContact, div.sidePolicy, div.qLinks 
+{
+	background-color: #ECEDF1;
+	padding: 0px;
+	border: 1px solid #D1D1D1;
+	margin-bottom: 10px;
+	width: 273px;
+}
+
+div.sideInner
+{
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+}
+
+div.sideInner a, div.sideInner a:visited
+{
+	color: #1689A9 !important;
+}
+
+div.sideInner ul 
+{
+	padding-left: 32px;
+}
+
+div.sideInner .emailPad { margin-left: 15px; }
+
+span.available { color: green; }
+span.unavailable { color: red; }
+span.noStatus { color: blue; }
+
+ul.listNoMarg
+{
+	margin-bottom: 8px;
+	margin-top: 0;
+}
+
+ul.sideListNoMarg
+{
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+h2.volpe
+{
+	color: #000 !important;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size: 18px !important;
+	padding-bottom: 12px;
+}
+	
+h3.volpe
+{
+	color: #000;
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	height: 14px !important;
+	padding-left: 0px;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	font-size: 14px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #88AC52;
+}
+	
+div.side h4
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #fff;
+	padding: 8px;
+	margin-top: 0;
+	font-family: Arial,Helvetica,sans-serif;
+	background-color: #425d72;
+}

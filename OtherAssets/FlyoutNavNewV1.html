@@ -1,0 +1,463 @@
+﻿<script type='text/javascript' src='/Scripts/jquery.placeholder.js'></script>
+<script type="text/javascript">
+	
+	$(function () {
+
+		$('#baseUrl').click(function () {
+			window.location = $(this).attr('href') + '?Project=' + $('#appendUrl').val();
+			return false;
+		});
+
+		$('#baseUrl2').click(function () {
+			window.location = $(this).attr('href') + '?Project=' + $('#appendUrl2').val();
+			return false;
+		});
+
+		$('#baseUrl3').click(function () {
+			window.location = $(this).attr('href') + '?ProjectTask=' + $('#appendUrl3').val();
+			return false;
+		});
+		
+		$(document).click(function(e) {
+			if (e.target.id.indexOf('appendUrl') == -1 &&
+				e.target.id.indexOf('baseUrl') == -1 &&
+				e.target.id != 'liSubMenuMasterProject' &&
+				e.target.id != 'liSubMenuProjects' &&
+				e.target.id != 'liSubMenuTask' &&
+				e.target.className != 'placeholderHelper' &&
+				e.target.className != 'input-wrapper' &&
+				e.target.className != 'input-wrapper filled'
+				) 
+			{
+				$("#subMenuTechnicalCenters").hide();
+				$("#subMenuDivisions").hide();
+				$("#subMenuMasterProject").hide();
+				$("#subMenuProjects").hide();
+				$("#subMenuTask").hide();
+				$("#subMenuSponsors").hide();
+				$("#subMenuPortfolios").hide();
+			}
+		});
+		
+		$('#TechnicalCenters').click(function(e) {
+			$("#subMenuTechnicalCenters").show();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").hide();
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#Divisions').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").show();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").hide();
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#MasterProject').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").show();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").hide();
+			$("#appendUrl").focus();
+			//$("#appendUrl").attr("placeholder", "");
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#Projects').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").show();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").hide();
+			$("#appendUrl2").focus();
+			//$("#appendUrl2").attr("placeholder", "");
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#Task').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").show();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").hide();
+			$("#appendUrl3").focus();
+			//$("#appendUrl3").attr("placeholder", "");
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#Sponsors').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").show();
+			$("#subMenuPortfolios").hide();
+			e.stopPropagation();
+			return false;
+		});
+
+		$('#Portfolios').click(function(e) {
+			$("#subMenuTechnicalCenters").hide();
+			$("#subMenuDivisions").hide();
+			$("#subMenuMasterProject").hide();
+			$("#subMenuProjects").hide();
+			$("#subMenuTask").hide();
+			$("#subMenuSponsors").hide();
+			$("#subMenuPortfolios").show();
+			e.stopPropagation();
+			return false;
+		});
+
+		$("#appendUrl").keyup(function(e){
+			var key = e.which;
+			if(key == 13){
+				$("#baseUrl").click();
+				return false;
+			}
+		});
+		
+		$("#appendUrl2").keyup(function(e){
+			var key = e.which;
+			if(key == 13){
+				$("#baseUrl2").click();
+				return false;
+			}
+		});
+	
+		$("#appendUrl3").keyup(function(e){
+			var key = e.which;
+			if(key == 13){
+				$("#baseUrl3").click();
+				return false;
+			}
+		});
+
+	});
+	
+	//$(function() {
+	//	$('input, textarea').placeholder();
+	//});
+	
+	/*
+	 * Persistent Placeholder - treats a label like a placeholder and
+	 * makes it persist even when you focus on an input. Huzzah!
+	 */
+	(function($) {
+	
+		var parentSelector = '.input-wrapper',
+			inputSelectors = [parentSelector + '>input.text', parentSelector + '>textarea'],
+			len = inputSelectors.length,
+			i;
+	
+		function update(force) {
+			var $input = $(this),
+				$parent = $input.parent(parentSelector);
+			return $parent[force === true || $input.val() ? 'addClass' : 'removeClass']('filled');
+		}
+	
+		function focus() {
+			update.call(this).addClass('focus');
+		}
+	
+		function blur() {
+			update.call(this).removeClass('focus');
+		}
+	
+		function keydown(evt) {
+			var c = evt.keyCode;
+			((47 < c && c < 91) || (95 < c && c < 112) || (185 < c && c < 223)) && update.call(this, true);
+		}
+	
+		$.fn.prepareInput = function() {
+			return this.each(update);
+		};
+	
+		for (i = 0; i < len; i++) {
+			$(inputSelectors[i]).live('focus', focus).live('blur', blur).live('keyup', update).live('click', update).live('keydown', keydown);
+		}
+	
+		$(function() {
+			for (i = 0; i < len; i++) {
+				$(inputSelectors[i]).prepareInput();
+			}
+		});
+	
+	})(jQuery);
+	
+</script>
+<style>
+/*
+	.placeholderHelper{
+		position: absolute;
+		right: 15px; /* Chrome + Safari? */ /*
+		right: 22px\9; /* IE9 hack */ /*
+		color: #ccc;
+		font-size:10px;
+		visibility:hidden;
+	}
+	
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		/* IE10+ CSS styles go here *//*
+		.placeholderHelper{
+			position: absolute;
+			right: 22px; 
+			color: #ccc;
+			font-size:10px;
+			visibility:hidden;
+		}
+	
+	}
+	
+	@-moz-document url-prefix() { 
+		/* Firefox CSS styles go here *//*
+		.placeholderHelper{
+			position: absolute;
+			top:2px;
+			right: 28px; 
+			color: #ccc;
+			font-size:10px;
+			visibility:hidden;
+		}
+	
+	}
+	
+	input:focus + .placeholderHelper { visibility:visible; }
+	*/
+	
+	
+	/** input wrapper */
+
+	.input-wrapper {
+		position: relative;
+		display: -moz-inline-box;
+		display: inline-block;
+		*display: inline; /* ie6&7 */
+		zoom: 1;
+		margin: 3px 0;
+		border: 1px solid #bbb;
+		background: #fff;
+		line-height: 16px;
+		height: 20px;
+		vertical-align: middle;
+	}
+	
+	.input-wrapper input.text,
+	.input-wrapper textarea {
+		z-index: 2;
+		margin: 0;
+		border: 0;
+		background: transparent;
+		/*
+		*background: url(http://hunch.com/media/img/t.png);  ie7 does weird stuff with transparent background, also please don't deep link to this image from your code 
+		*/
+	}
+	
+	.input-wrapper label {
+		z-index: 1;
+		position: absolute;
+		height: 16px;
+		padding-top:3px;
+		padding-left:3px;
+		font-size: 10px;
+		line-height: 16px;
+		color: #999;
+		overflow: hidden;
+	}
+	
+	.input-wrapper.focus label{
+		filter:alpha(opacity=50);
+		opacity: 0.4;
+	}
+	
+	.input-wrapper.filled label{
+		display: none;
+	}
+	
+	/* **/
+	
+	
+</style>
+
+<div id="subnavcontainer" class="kbNavcontainer">
+	<ul id="navlist" class="knNavlist">
+		<li>
+			<a id="VolpeCenter" href="/sites/DW/Pages/Volpe-Center-AllInOne.aspx" style="width: 80px;">Volpe Center</a>
+		</li>
+		<li>
+			<a id="TechnicalCenters" style="width: 105px;">Technical Centers</a>
+			<ul id="subMenuTechnicalCenters" class="subMenu" style="width: 340px;">
+
+			<li id="liSubMenuMasterProject">
+					
+				</li>
+
+				<li><a href="/sites/DW/Pages/Tech-Center-All.aspx?TechCenter=V-310">V-310 - Office of Safety Management and Human Factors</a></li>
+				<li><a href="/sites/DW/Pages/Tech-Center-All.aspx?TechCenter=V-320">V-320 - Office of Policy, Planning and Environment</a></li>
+				<li><a href="/sites/DW/Pages/Tech-Center-All.aspx?TechCenter=V-330">V-330 - Office of Infrastructure Systems and Technology</a></li>
+				<li><a href="/sites/DW/Pages/Tech-Center-All.aspx?TechCenter=V-340">V-340 - Office of Air Traffic Systems and Operations</a></li>
+
+			</ul>
+		</li>
+		<li>
+			<a id="Divisions">Divisions</a>
+			<ul id="subMenuDivisions" class="subMenu" style="width: 300px;">
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-311">V-311 - Safety Information Systems</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-312">V-312 - Aviation Safety Management Systems</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-313">V-313 - Safety Measurement and Analysis</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-314">V-314 - Surface Transportation Human Factors</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-315">V-315 - Aviation Human Factors</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-320A">V-320A - CAFE Program Office</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-321">V-321 - Economic Analysis</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-322">V-322 - Organization Performance</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-323">V-323 - Transportation Planning</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-324">V-324 - Environmental Measurement and Modeling</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-325">V-325 - Energy Analysis and Sustainability</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-326">V-326 - Environmental Science and Engineering</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-331">V-331 - Security and Emergency Management</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-332">V-332 - Situational Awareness and Logistics</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-333">V-333 - Structures and Dynamics</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-334">V-334 - Systems Safety and Engineering</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-335">V-335 - Infrastructure Engineering and Deployment</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-336">V-336 - Technology Innovation and Policy</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-337">V-337 - Advanced Vehicle Technology</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-340A">V-340A - NextGen Program Office</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-341">V-341 - Air Navigation and Surveillance</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-342">V-342 - Aviation Systems Engineering</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-343">V-343 - Air Traffic Management Systems</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-344">V-344 - Aviation Facilities and Business Services</a></li>
+				<li><a href="/sites/DW/Pages/Division-All.aspx?Division=V-345">V-345 - Aircraft Wakes and Weather</a></li>
+			</ul>
+		</li>
+		<li>
+			<a id="MasterProject" style="width: 85px;">Master Project</a>
+			<ul id="subMenuMasterProject" class="subMenuSearch" style="width: 250px;">
+				<li id="liSubMenuMasterProject" style="height:80px;">
+					<label for="appendUrl" class="searchLabel" id="appendUrlSearchLabel">Search:</label>&nbsp;&nbsp;
+					 <div class="input-wrapper">
+						<label for="appendUrl" id="appendUrlLabel">Enter master project #</label>
+						<input id="appendUrl" name="appendUrl" type="text" class="text" min="8" maxlength="8" />
+						<br />
+						<br />
+						<a href="/sites/DW/Pages/ProjectMaster-All.aspx" id="baseUrl" class="button">GO</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a id="Projects">Projects</a>
+			<ul id="subMenuProjects" class="subMenuSearch" style="width: 250px;">
+				<li id="liSubMenuProjects" style="height:80px;">
+					<label for="appendUrl2" class="searchLabel" id="appendUrlSearchLabel2">Search: </label>&nbsp;&nbsp;
+					<div class="input-wrapper">
+						<label for="appendUrl2" id="appendUrlLabel2">Enter project #</label>
+						<input id="appendUrl2" name="appendUrl2" type="text" class="text" min="8" maxlength="8" />
+						<br />
+						<br />
+						<a href="/sites/DW/Pages/Project-All.aspx" id="baseUrl2" class="button">GO</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a id="Task">Task</a>
+			<ul id="subMenuTask" class="subMenuSearch" style="width: 250px;">
+				<li id="liSubMenuTask" style="height:80px;">
+					<label for="appendUrl3" class="searchLabel" id="appendUrl3Label">Search: </label>&nbsp;&nbsp;
+					<div class="input-wrapper">
+						<label for="appendUrl3" id="appendUrlLabel3">Enter task #</label>
+						<input id="appendUrl3" name="appendUrl3" type="text" class="text" min="15" maxlength="15" />
+						<br />
+						<br />
+						<a href="/sites/DW/Pages/Task-All.aspx" id="baseUrl3" class="button">GO</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a id="Sponsors">Sponsors</a>
+			<ul id="subMenuSponsors" class="subMenu" style="width: 90px;">
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=AIR FORCE">Air Force</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=ARMY">Army</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=DOD OTHER">DOD Other</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=INTERSERVICE">Interservice</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=NAVY">Navy</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=DOT OTHER">DOT Other</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FAA">FAA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FHWA">FHWA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FMCSA">FMCSA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FRA">FRA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FTA">FTA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=MARAD">MARAD</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=NHTSA">NHTSA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=OST">OST</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=PHMSA">PHMSA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=RITA">RITA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=SLSDC">SLSDC</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=CAPITOL POLICE">Capitol Police</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=ENERGY">Energy</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=EPA">EPA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=FOREIGN">Foreign</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=HOMELAND">Homeland</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=INTERIOR / FLMA">Interior / FLMA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=NASA">NASA</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=NON FEDERAL">Non Federal</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=OTHER OTHER">Other Other</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=STATE / LOCAL">State / Local</a></li>
+				<li><a href="/sites/DW/Pages/Sponsor-All.aspx?Sponsor=USPS">USPS</a></li>
+			</ul>
+		</li>
+		<li>
+			<a id="Portfolios" style="width: 67px;">Portfolios</a>
+			<ul id="subMenuPortfolios" class="subMenu" style="width: 99px;">
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=DHS">DHS</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=DOD">DOD</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=EPA">EPA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FAA AEE">FAA AEE</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FAA ATO">FAA ATO</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FAA AVS">FAA AVS</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FAA Other">FAA Other</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FHWA">FHWA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FMCSA">FMCSA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FRA">FRA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=FTA">FTA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=ITS">ITS</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=JPO">JPO</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=MARAD">MARAD</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=NASA">NASA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=NHTSA">NHTSA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=OPS SUPPORT">OPS Support</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=OST">OST</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=OST-R">OST-R</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=OTHER FEDERAL">Other Federal</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=PHMSA">PHMSA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=PRIVATE SECTOR">Private Sector</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=Public Lands">Public Lands</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=RITA">RITA</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=SBIR">SBIR</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=SLSDC">SLSDC</a></li>
+				<li><a href="/sites/DW/Pages/Portfolio-All.aspx?Portfolio=State / Local">State / Local</a></li>
+			</ul>
+		</li>
+	</ul>
+</div><head><title></title></head>
